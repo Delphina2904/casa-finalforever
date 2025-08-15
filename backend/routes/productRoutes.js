@@ -1,6 +1,8 @@
 // backend/routes/productRoutes.js
 const express = require('express');
 const router = express.Router();
+const { syncProductsFromShopify } = require('../services/shopifyService'); // Adjust path if needed
+
 
 const {
   getAllProducts,
@@ -16,6 +18,18 @@ const {
   updateProduct
 } = require('../controllers/productController');
 
+router.post('/sync-from-shopify', async (req, res) => {
+  const { brandId } = req.body;
+  if (!brandId) {
+    return res.status(400).json({ message: 'Brand ID is required.' });
+  }
+  try {
+    const result = await syncProductsFromShopify(brandId);
+    res.json({ message: 'Sync successful', ...result });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 // CREATE product
 router.post('/create', createProduct);
 

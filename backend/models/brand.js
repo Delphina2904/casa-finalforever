@@ -53,6 +53,14 @@ const brandSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  shopify_store_url: {
+    type: String,
+    trim: true,
+  },
+  shopify_access_token: {
+    type: String,
+    trim: true,
+  },
   crm_user_ids: {
     type: [String]
   },

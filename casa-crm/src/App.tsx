@@ -13,6 +13,8 @@ import Sales from './pages/Sales';
 import AddProduct from './pages/AddProduct';
 import CreateBrandForm from './pages/CreateBrand'
 import Order from './pages/Order'
+import ShopifySettings from './pages/ShopifySettings'; // Import the new page
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
               <Route index element={<Products />} />
               <Route path="orders" element={<Order />} />
               <Route path="products/add" element={<AddProduct />} />
+              <Route path="shopify-settings" element={<ShopifySettings />} /> 
               <Route path="register-brand" element={<RegisterBrand />} />
               {/* <Route path="sales" element={<Sales />} /> */}
               <Route path="create-brand" element={<CreateBrandForm />} />
